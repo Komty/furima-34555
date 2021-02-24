@@ -2,18 +2,16 @@
 
 ## users テーブル
 
-| Column           | Type   | Options     |
-| -----------------| ------ | ----------- |
-| nickname         | string | null: false |
-| email            | string | null: false |
-| password         | string | null: false |
-| family_name      | string | null: false |
-| first_name       | string | null: false |
-| family-name_kana | string | null: false |
-| first_name_kana  | string | null: false |
-| birthday_day_yy  | string | null: false |
-| birthday_day_mm  | string | null: false |
-| birthday_day_dd  | string | null: false |
+| Column             | Type   | Options     |
+| -----------------  | ------ | ----------- |
+| nickname           | string | null: false |
+| email              | string | null: false |
+| encrypted_password | string | null: false |
+| family_name        | string | null: false |
+| first_name         | string | null: false |
+| family-name_kana   | string | null: false |
+| first_name_kana    | string | null: false |
+| birthday           | date   | null: false |
 
 ### Association
 
@@ -27,7 +25,6 @@
 | ----------- | -----------| -------------------------------|
 | user_id     | integer    | null: false, foreign_key: true |
 | customer_id | string     | null: false                    |
-| card_id     | string     | null: false                    | 
 
 ### Association
 
@@ -51,18 +48,18 @@
 
 ## items テーブル
 
-| Column       | Type       | Options                        |
-| -------------| -----------| -------------------------------|
-| image        | string     | null: false                    |
-| name         | string     | null: false                    |
-| description  | string     | null: false                    | 
-| category     | string     | null: false                    |
-| status       | string     | null: false                    |
-| delivery-cost| string     | null: false                    |
-| prefecture   | string     | null: false                    |
-| delivery_days| string     | null: false                    | 
-| price        | string     | null: false                    |
-| user_id      | integer    | null: false, foreign_key:true  |
+| Column           | Type       | Options                        |
+| -----------------| -----------| -------------------------------|
+| image            | string     | null: false                    |
+| name             | string     | null: false                    |
+| description      | string     | null: false                    | 
+| category_id      | integer    | null: false                    |
+| status_id        | integer    | null: false                    |
+| delivery-cost_id | integer    | null: false                    |
+| prefecture_id    | integer    | null: false                    |
+| delivery_day_id  | integer    | null: false                    | 
+| price            | string     | null: false                    |
+| user_id          | integer    | null: false, foreign_key:true  |
 
 ### Association
 
