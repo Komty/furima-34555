@@ -16,26 +16,27 @@
 ### Association
 
 - has_many :items
-- has_one  :card
-- has_one  :buyer
+- has_many :cards
+
 
 ## card テーブル
 
 | Column      | Type       | Options                        |
 | ----------- | -----------| -------------------------------|
 | user_id     | integer    | null: false, foreign_key: true |
+| item_id     | integer    | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- belongs_to :buyer
-- belongs_to :items
+- has_one :buyer
+- belongs_to :item
 
 ## buyer テーブル
 
 | Column       | Type       | Options                        |
 | -------------| -----------| -------------------------------|
-| user_id      | integer    | null: false, foreign_key: true |
+| card_id      | integer    | null: false, foreign_key: true |
 | post_code    | string     | null: false                    |
 | prefecture_id| integer    | null: false                    | 
 | city         | string     | null: false                    |
@@ -46,7 +47,6 @@
 ### Association
 
 - belongs_to :card
-- has_many :items
 
 ## items テーブル
 
@@ -61,10 +61,9 @@
 | delivery_day_id  | integer    | null: false                    | 
 | price            | integer    | null: false                    |
 | user_id          | integer    | null: false, foreign_key:true  |
-| customer_id      | reference  | null: false, foreign_key:true  |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :card
-- belongs_to :buyer
+
