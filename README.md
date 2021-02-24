@@ -24,11 +24,12 @@
 | Column      | Type       | Options                        |
 | ----------- | -----------| -------------------------------|
 | user_id     | integer    | null: false, foreign_key: true |
-| customer_id | string     | null: false                    |
 
 ### Association
 
 - belongs_to :user
+- belongs_to :buyer
+- belongs_to :items
 
 ## buyer テーブル
 
@@ -44,13 +45,13 @@
 
 ### Association
 
-- belongs_to :user
+- belongs_to :card
+- has_many :items
 
 ## items テーブル
 
 | Column           | Type       | Options                        |
 | -----------------| -----------| -------------------------------|
-| image            | string     | null: false                    |
 | name             | string     | null: false                    |
 | description      | text       | null: false                    | 
 | category_id      | integer    | null: false                    |
@@ -60,7 +61,10 @@
 | delivery_day_id  | integer    | null: false                    | 
 | price            | integer    | null: false                    |
 | user_id          | integer    | null: false, foreign_key:true  |
+| customer_id      | reference  | null: false, foreign_key:true  |
 
 ### Association
 
 - belongs_to :user
+- belongs_to :card
+- belongs_to :buyer
