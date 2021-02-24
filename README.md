@@ -52,7 +52,7 @@
 | -----------------| -----------| -------------------------------|
 | image            | string     | null: false                    |
 | name             | string     | null: false                    |
-| description      | string     | null: false                    | 
+| description      | text       | null: false                    | 
 | category_id      | integer    | null: false                    |
 | status_id        | integer    | null: false                    |
 | delivery-cost_id | integer    | null: false                    |
