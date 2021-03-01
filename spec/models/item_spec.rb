@@ -116,9 +116,9 @@ RSpec.describe Item, type: :model do
       end
 
       it 'priceが9,999,999円以上だと出品できないこと' do
-        @item.price = 10,000,000 # 意図的に範囲外の数字入力を行いエラーを発生させる
+        @item.price = 10_000_000 # 意図的に範囲外の数字入力を行いエラーを発生させる
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
       end
     end        
   end  
