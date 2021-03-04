@@ -32,7 +32,7 @@
 - has_one :buyer
 - belongs_to :item
 
-## buyer テーブル
+## address テーブル
 
 | Column       | Type       | Options                        |
 | -------------| -----------| -------------------------------|
