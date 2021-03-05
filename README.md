@@ -65,5 +65,5 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :card
+- has_one :card
 
