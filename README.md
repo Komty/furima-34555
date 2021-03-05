@@ -29,7 +29,7 @@
 ### Association
 
 - belongs_to :user
-- has_one :buyer
+- has_one :address
 - belongs_to :item
 
 ## address テーブル

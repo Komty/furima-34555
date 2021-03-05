@@ -17,6 +17,7 @@ class Item < ApplicationRecord
   end
 
   belongs_to :user
+  belongs_to :card
   has_one_attached :image
 
   belongs_to :category
