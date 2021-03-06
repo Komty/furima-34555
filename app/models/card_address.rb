@@ -14,8 +14,8 @@ class CardAddress
     validates :city
     validates :address
     
-    # ハイフンなし11桁半角数字のみ許可する
-    validates :phone_number, numericality: {with: /\A\d{11}\z/, message: "半角数字を使用してください" } 
+    # ハイフンなし11桁以下の半角数字のみ許可する
+    validates :phone_number, numericality: {with: /\A[0-9]+\z/, message: "半角数字を使用してください" } 
     validates :phone_number, length: {maximum: 11}
   end
   
