@@ -19,12 +19,12 @@ class CardAddress
     validates :phone_number, length: {maximum: 11}
   end
   
-    def save
-      # 購入情報を保存し、変数cardに代入する
-      card = Card.create(user_id: user_id, item_id: item_id)
-      # 住所を保存する
-      # card_idには、変数cardのidと指定する
-      Address.create(post_code: post_code, prefecture_id: prefecture_id, city: city, address: address, building_name: building_name, phone_number: phone_number, card_id: card.id)
-    end  
+  def save
+    # 購入情報を保存し、変数cardに代入する
+    card = Card.create(user_id: user_id, item_id: item_id)
+    # 住所を保存する
+    # card_idには、変数cardのidと指定する
+    Address.create(post_code: post_code, prefecture_id: prefecture_id, city: city, address: address, building_name: building_name, phone_number: phone_number, card_id: card.id)
+  end  
 
 end
