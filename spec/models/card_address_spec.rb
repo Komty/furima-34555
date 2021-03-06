@@ -68,6 +68,12 @@ RSpec.describe CardAddress, type: :model do
         @card_address.valid?
         expect(@card_address.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
       end
+
+      it 'tokenが空だと保存できないこと' do
+        @card_address.token = ''
+        @card_address.valid?
+        expect(@card_address.errors.full_messages).to include("Token can't be blank")
+      end
     end
     
   end

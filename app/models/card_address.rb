@@ -3,6 +3,7 @@ class CardAddress
   attr_accessor :user_id, :item_id, :card_id, :post_code, :prefecture_id, :city, :address, :building_name, :phone_number, :token
 
   with_options presence: true do
+    validates :token
     validates :user_id
     validates :item_id
     # 数字3桁、ハイフン、数字4桁の並びのみ許可する
@@ -12,7 +13,7 @@ class CardAddress
     
     validates :city
     validates :address
-    validates :token
+    
     # ハイフンなし11桁半角数字のみ許可する
     validates :phone_number, numericality: {with: /\A\d{11}\z/, message: "半角数字を使用してください" } 
     validates :phone_number, length: {maximum: 11}
