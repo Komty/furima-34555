@@ -29,10 +29,10 @@
 ### Association
 
 - belongs_to :user
-- has_one :buyer
+- has_one :address
 - belongs_to :item
 
-## buyer テーブル
+## address テーブル
 
 | Column       | Type       | Options                        |
 | -------------| -----------| -------------------------------|
@@ -65,5 +65,5 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :card
+- has_one :card
 

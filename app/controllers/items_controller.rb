@@ -51,9 +51,10 @@ class ItemsController < ApplicationController
   end
 
   def set_root_path
-    if current_user.id != @item.user.id
+    if current_user.id != @item.user.id || @item.card.present?
       redirect_to root_path
     end
   end
+
   
 end
