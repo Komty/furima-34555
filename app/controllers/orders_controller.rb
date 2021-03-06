@@ -1,13 +1,15 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!
 
   def index
     @item = Item.find(params[:item_id])
     @card_address = CardAddress.new
+    if current_user == @item.user || @item.card.present?
+      redirect_to root_path
+    end
   end
 
   def create
-    # binding.pry
     @item = Item.find(params[:item_id])
     @card_address = CardAddress.new(order_params)
     if @card_address.valid?
