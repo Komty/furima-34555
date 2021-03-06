@@ -64,7 +64,7 @@ RSpec.describe CardAddress, type: :model do
       end
 
       it 'phone_numberが半角数字が１１桁以下でなければ購入できないこと' do
-        @card_address.phone_number = 123456789012 # 意図的に１２桁の入力を行いエラーを発生させる
+        @card_address.phone_number = '123456789012' # 意図的に１２桁の入力を行いエラーを発生させる
         @card_address.valid?
         expect(@card_address.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
       end

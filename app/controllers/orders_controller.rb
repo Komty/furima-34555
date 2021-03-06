@@ -1,12 +1,10 @@
 class OrdersController < ApplicationController
   before_action :set_item, only: [:index, :create]
   before_action :authenticate_user!
+  before_action :set_root_path, only: [:index, :create]
 
   def index
     @card_address = CardAddress.new
-    if current_user == @item.user || @item.card.present?
-      redirect_to root_path
-    end
   end
 
   def create
@@ -28,6 +26,12 @@ class OrdersController < ApplicationController
 
   def set_item
     @item = Item.find(params[:item_id])
+  end
+
+  def set_root_path
+    if current_user == @item.user || @item.card.present?
+      redirect_to root_path
+    end
   end
 
   def pay_item
