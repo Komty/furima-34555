@@ -13,11 +13,13 @@ class CardAddress
     
     validates :city
     validates :address
+    validates :phone_number
+  end 
     
-    # ハイフンなし11桁以下の半角数字のみ許可する
+  # ハイフンなし11桁以下の半角数字のみ許可する
     validates :phone_number, numericality: {with: /\A[0-9]+\z/, message: "半角数字を使用してください" } 
     validates :phone_number, length: {maximum: 11}
-  end
+  
   
   def save
     # 購入情報を保存し、変数cardに代入する
