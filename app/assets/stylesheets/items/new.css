@@ -227,3 +227,9 @@
 .inc {
   font-size: 13px;
 }
+
+/* 画像プレビュー 表示調整 */
+.image {
+  max-height: 150px;
+  max-width: 150px;
+}
