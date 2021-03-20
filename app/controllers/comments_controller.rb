@@ -1,13 +1,19 @@
 class CommentsController < ApplicationController
-  
+
   def create
-    @item = Item.find(params[:item_id])
     @comment = Comment.new(comment_params)
     if @comment.save
-      redirect_to item_path(@item)
+      redirect_to item_path(@comment.item.id) # 今回の実装には関係ありませんが、このようにPrefixでパスを指定することが望ましいです。
     else
-      flash.now[:alert] = 'コメントを入力してください。'
+      @item = @comment.item
+      @comments = @item.comments
+      render "comments/show"
     end
+  end
+
+  def show
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
   end
 
   private
