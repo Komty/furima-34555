@@ -17,7 +17,7 @@
 
 - has_many :items
 - has_many :cards
-
+- has_many :comments, dependent: :destroy
 
 ## card テーブル
 
@@ -66,4 +66,19 @@
 
 - belongs_to :user
 - has_one :card
+- has_many :comments, dependent: :destroy
+
+## comments テーブル
+
+| Column   | Type       | Options                        |
+| -------- | ------     | -------------------------------|
+| text     | text       | null: false                    |
+| user_id  | integer    | null: false, foreign_key: true |
+| item_id  | integer    | null: false, foreign_key: true | 
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+
 
