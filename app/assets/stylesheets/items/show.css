@@ -210,3 +210,8 @@
 .comments_list {
   list-style: none;
 }
+
+.user_list {
+  font-weight: bold;
+  display: inline;
+}

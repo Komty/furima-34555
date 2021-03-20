@@ -81,7 +81,7 @@
 <div class="comment-box">
 
   <% if user_signed_in? %>
-    <%= form_with model: [@item, @comment], local: true do |f|%> 
+    <%= form_with model: [@item, @comment] do |f|%> 
       <%=f.text_area :text, class:"comment-text" %>
       <p class="comment-warn">
         相手のことを考え丁寧なコメントを心がけましょう。
@@ -95,12 +95,17 @@
     <% end %>
   <% end %>
 
-  <% @comments.each do |comment| %>
-    <li class="comments_list">
-      <%= link_to "#{comment.user.nickname}", "#", class: :comment_user %>
-      <%= comment.text %>  
-    </li>
-  <% end %>
+  <div id="comments">
+    <% @comments.each do |comment| %>
+      <li class="comments_list">
+        <div class="user_list">
+          <%= comment.user.nickname %>
+        </div>
+          <%= comment.text %>  
+      </li>
+    <% end %>
+  </div> 
+  
 
 </div>
 
