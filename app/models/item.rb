@@ -19,6 +19,7 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one :card
   has_one_attached :image
+  has_many :comments, dependent: :destroy
 
   belongs_to :category
   belongs_to :delivery_cost
