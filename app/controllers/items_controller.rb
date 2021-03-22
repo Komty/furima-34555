@@ -2,11 +2,12 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :set_root_path, only: [:edit, :update, :destroy]
-  before_action :search_product, only: [:index, :search]
+  before_action :search_item, only: [:index, :search]
 
   def index
     @items = Item.order("created_at DESC")
     @itemlist = Item.all
+    set_itemlist_column
   end
   
   def new
@@ -47,6 +48,7 @@ class ItemsController < ApplicationController
   def search
     @results = @p.result  # 検索条件にマッチした商品の情報を取得
     @itemlist = Item.all
+    set_itemlist_column
   end
 
   private
@@ -65,8 +67,13 @@ class ItemsController < ApplicationController
     end
   end
 
-  def search_product
+  def search_item
     @p = Item.ransack(params[:q])  # 検索オブジェクトを生成
   end
   
+  def set_itemlist_column
+    @itemlist_name = Item.select("name").distinct  # 重複なくnameカラムのデータを取り出す
+  end
+
 end
+
