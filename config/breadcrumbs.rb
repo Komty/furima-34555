@@ -31,3 +31,8 @@ crumb :orders_index do |item|
   link "商品購入", item_orders_path
   parent :items_show,item
 end
+
+crumb :item_search do
+  link "検索結果", search_items_path
+  parent :root
+end
