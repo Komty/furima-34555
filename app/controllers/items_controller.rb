@@ -2,9 +2,11 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :set_root_path, only: [:edit, :update, :destroy]
+  before_action :search_product, only: [:index, :search]
 
   def index
     @items = Item.order("created_at DESC")
+    @itemlist = Item.all
   end
   
   def new
@@ -21,6 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @itemlist = Item.all
     @comment = Comment.new
     @comments = @item.comments.includes(:user).order("created_at DESC")
   end
@@ -42,7 +45,8 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @items = Item.search(params[:keyword])
+    @results = @p.result  # 検索条件にマッチした商品の情報を取得
+    @itemlist = Item.all
   end
 
   private
@@ -59,6 +63,10 @@ class ItemsController < ApplicationController
     if current_user.id != @item.user.id || @item.card.present?
       redirect_to root_path
     end
+  end
+
+  def search_product
+    @p = Item.ransack(params[:q])  # 検索オブジェクトを生成
   end
   
 end
