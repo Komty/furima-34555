@@ -2,44 +2,46 @@
 <%= render "shared/header" %>
 
 <div class='item-contents'>
-  <div class="search">検索結果</div>
+  <div class="search">
+    検索結果
+  </div>
 
-    <%# 検索結果の個数で条件分岐 %>
-    <ul class='item-lists'>
-      <% if @results.length !=0 %>
-        <% @results.each do |result| %>
-            <li class='list'>
-              <%= link_to item_path(result.id) do %>
-                <div class="item-img-content">
-                  <%= image_tag(result.image, class: "item-img") %>
-                    
-                    <% if result.card.present? %>
-                      <div class="sold-out">
-                        <span>Sold Out!!</span>
-                      </div>
-                    <% end %>
+  <%# 検索結果の個数で条件分岐 %>
+  <ul class='item-lists'>
+    <% if @results.length !=0 %>
+      <% @results.each do |result| %>
+        <li class='list'>
+          <%= link_to item_path(result.id) do %>
+            <div class="item-img-content">
+              <%= image_tag(result.image, class: "item-img") %>
                 
-                </div>            
-                  <div class='item-info'>
-                    <h3 class='item-name'>
-                      <%= result.name %>
-                    </h3>
-                    <div class='item-price'>
-                      <span><%= result.price %>円<br><%= result.delivery_cost.name %></span>
-                      <div class='star-btn'>
-                        <%= image_tag "star.png", class:"star-icon" %>
-                        <span class='star-count'>0</span>
-                      </div>
-                    </div>
-                  </div>
+              <% if result.card.present? %>
+                <div class="sold-out">
+                  <span>Sold Out!!</span>
+                </div>
               <% end %>
-            </li>
+            
+            </div>            
+            <div class='item-info'>
+              <h3 class='item-name'>
+                <%= result.name %>
+              </h3>
+              <div class='item-price'>
+                <span><%= result.price %>円<br><%= result.delivery_cost.name %></span>
+                <div class='star-btn'>
+                  <%= image_tag "star.png", class:"star-icon" %>
+                  <span class='star-count'>0</span>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </li>
       <% end %>
-    </ul>
     <% else %>
       該当する商品はありません
     <% end %>
-    <br>
-    <%= link_to 'トップページへ戻る', root_path %>
-
+  </ul>  
+  <br>
+  <%= link_to 'トップページへ戻る', root_path %>
+  
 </div>
