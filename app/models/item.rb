@@ -26,4 +26,5 @@ class Item < ApplicationRecord
   belongs_to :delivery_day
   belongs_to :prefecture
   belongs_to :status
+
 end

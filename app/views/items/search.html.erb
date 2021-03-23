@@ -1,0 +1,27 @@
+<% breadcrumb :item_search, @itemlist_name %>
+<%= render "shared/header" %>
+
+<div class="search-list">    
+    <h1>
+      検索結果
+    </h1>
+    <%# 検索結果の個数で条件分岐 %>
+    <% if @results.length !=0 %>
+      <% @results.each do |result| %>
+        <td>
+        <br>
+        <ul>
+          <%= link_to item_path(result.id) do %>
+          <li><%= image_tag(result.image, class: "item-img") %></li>
+          <% end %>
+          <li><%= result.name %></li>
+          <li><%= result.price %>円</li>
+          <li><%= result.delivery_cost.name%></li>
+        </ul>
+      <% end %>
+    <% else %>
+      該当する商品はありません
+    <% end %>
+    <br>
+    <%= link_to 'トップページへ戻る', root_path %>
+</div>
