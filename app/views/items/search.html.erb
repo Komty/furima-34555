@@ -1,27 +1,45 @@
 <% breadcrumb :item_search, @itemlist_name %>
 <%= render "shared/header" %>
 
-<div class="search-list">    
-    <h1>
-      検索結果
-    </h1>
+<div class='item-contents'>
+  <div class="search">検索結果</div>
+
     <%# 検索結果の個数で条件分岐 %>
-    <% if @results.length !=0 %>
-      <% @results.each do |result| %>
-        <td>
-        <br>
-        <ul>
-          <%= link_to item_path(result.id) do %>
-          <li><%= image_tag(result.image, class: "item-img") %></li>
-          <% end %>
-          <li><%= result.name %></li>
-          <li><%= result.price %>円</li>
-          <li><%= result.delivery_cost.name%></li>
-        </ul>
+    <ul class='item-lists'>
+      <% if @results.length !=0 %>
+        <% @results.each do |result| %>
+            <li class='list'>
+              <%= link_to item_path(result.id) do %>
+                <div class="item-img-content">
+                  <%= image_tag(result.image, class: "item-img") %>
+                    
+                    <% if result.card.present? %>
+                      <div class="sold-out">
+                        <span>Sold Out!!</span>
+                      </div>
+                    <% end %>
+                
+                </div>            
+                  <div class='item-info'>
+                    <h3 class='item-name'>
+                      <%= result.name %>
+                    </h3>
+                    <div class='item-price'>
+                      <span><%= result.price %>円<br><%= result.delivery_cost.name %></span>
+                      <div class='star-btn'>
+                        <%= image_tag "star.png", class:"star-icon" %>
+                        <span class='star-count'>0</span>
+                      </div>
+                    </div>
+                  </div>
+              <% end %>
+            </li>
       <% end %>
+    </ul>
     <% else %>
       該当する商品はありません
     <% end %>
     <br>
     <%= link_to 'トップページへ戻る', root_path %>
+
 </div>
